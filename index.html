@@ -1,8 +1,39 @@
 <html>
   <head>
+    <meta charsets="UTF-8">
+    <title>Book App</title>
+    <meta name="viewport" content="width=device-width, intitial-scale=1">
+    <link rel="stylesheet" href="vendor/styles/normalize.css">
+    <link rel="stylesheet" href="vendor/styles/icons.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/modules.css">
+    <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
 
+    <script id="book-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address>>{{author}}</address>
+            <img src="{{image_url}}"></img>
+            {{isbn}}
+          </div>
+        </header>
+        <section class="book-body">{{{description}}}</section>
+        <!-- <a href="#" class="read-on">Read on &rarr;</a> -->
+      </article>
+    </script>
+  
   </head>
   <body>
     <h1>Books App</h1>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    <script src="scripts/article.js"></script>
+    <script src="scripts/articleView.js"></script>
+
   </body>
 </html>
