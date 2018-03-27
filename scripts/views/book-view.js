@@ -1,4 +1,7 @@
 `use strict`;
+var app = app || {};
+
+(function(module) {
 
 const bookView = {};
 
@@ -10,4 +13,6 @@ bookView.initIndexPage = () => {
   });
 }
 
-$(document).ready(Book.fetchAll())
+module.bookView = bookView;
+
+})(app);
