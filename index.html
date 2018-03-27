@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
 
-    <script id="book-template" type="text/x-handlebars-template">
+    <script id="book-list-template" type="text/x-handlebars-template">
       <article class="clearfix" data-author="{{author}}">
         <header>
-          <h1>{{title}}</h1>
+          <h1>{{author}}</h1>
           <div class="byline">
-            By <address>>{{author}}</address>
+            By <address>{{title}}</address>
             <img src="{{image_url}}"></img>
           </div>
           <p>{{isbn}}</p>
@@ -26,13 +26,20 @@
   
   </head>
   <body>
-    <h1>Books App</h1>
+    <main>
+      <h1>Books App</h1>
+      <section class="container"></section>
+      <section id= "book-list" class="book-view">
+
+      </section>
+    </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
-    <script src="scripts/article.js"></script>
-    <script src="scripts/articleView.js"></script>
+    <script src="scripts/models/book.js"></script>
+    <script src="scripts/views/book-view.js"></script>
+    <script>$(document).ready(Book.fetchAll(app.bookView.initIndexPage))</script>
 
   </body>
 </html>
