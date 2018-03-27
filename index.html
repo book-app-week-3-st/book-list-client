@@ -9,30 +9,39 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
+    <link href="https://fonts.googleapis.com/css?family=Domine" rel="stylesheet">
 
     <script id="book-list-template" type="text/x-handlebars-template">
+
       <article class="clearfix" data-author="{{author}}">
-        <header>
-          <h1>{{author}}</h1>
+        
+          <h2>{{author}}</h2>
           <div class="byline">
             By <address>{{title}}</address>
             <img src="{{image_url}}"></img>
           </div>
           <p>{{isbn}}</p>
-        </header>
+
         <section class="book-body"><p>{{description}}</p></section>
       </article>
     </script>
   
   </head>
   <body>
-    <main>
+
+      <header>
       <h1>Books App</h1>
+      </header>
+
+      <main>
       <section class="container"></section>
       <section id= "book-list" class="book-view">
-
       </section>
     </main>
+    
+    <footer>
+
+    </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>

@@ -1,0 +1,38 @@
+html {
+    text-align: center;
+    font-family: 'Domine', serif;
+}
+
+header {
+    height: 20vh;
+    background-color: slateblue;
+    color: lightgrey
+}
+
+header h1 {
+    padding-top: 5vh;
+}
+main {
+    background-color: burlywood;
+    color: black;
+}
+
+img {
+    width: 25vw;
+    height: 40vh;
+}
+
+article:first-child {
+    margin-top: 5vw;
+}
+
+img:last-child {
+    margin-bottom: 5vw;
+}
+
+footer {
+    height: 20vh;
+    width: 100%;
+    background-color: black;
+
+}
