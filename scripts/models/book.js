@@ -1,6 +1,7 @@
 `use strict`;
 
 function Book (rawDataObj) {
+  this.book_id = rawDataObj.book_id;
   this.title = rawDataObj.title;
   this.author = rawDataObj.author;
   this.isbn = rawDataObj.isbn;
@@ -30,11 +31,13 @@ Book.fetchAll = callback => {
     })
   };
   
-Book.fetchOne = callback => {
-  $.get(`http://localhost:3000/api/v1/books/${this.author_id}`)
+Book.fetchOne = function (ctx, callback) {
+  console.log(ctx.params.book_id);
+  debugger;
+  $.get(`http://localhost:3000/api/v1/books/${ctx.params.book_id}`)
   .then(results => {
     Book.loadAll(results);
-    callback();
+    callback(ctx);
   },
   function(err) {
     console.error(err);

@@ -18,8 +18,10 @@ bookView.initDetailPage = (ctx) => {
   $('.book-view').hide();
   $('.form-view').hide();
   $('.detail-view').show();
-  let selected = Book.all.filter(el => el.author_id = ctx.params);
-  $('#book-detail').append(selected.toHtml());
+  let selected = Book.all.filter(el => el.book_id = ctx.params.book_id);
+  console.log(selected);
+  debugger;
+  $('#book-detail').append(selected[0].toHtml());
 }
 
 bookView.submit = event => {
