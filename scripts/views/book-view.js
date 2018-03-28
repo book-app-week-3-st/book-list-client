@@ -20,7 +20,6 @@ bookView.initDetailPage = (ctx) => {
   $('.detail-view').show();
   let selected = Book.all.filter(el => el.book_id = ctx.params.book_id);
   console.log(selected);
-  debugger;
   $('#book-detail').append(selected[0].toHtml());
 }
 
@@ -43,10 +42,10 @@ bookView.initFormPage = () => {
   $('.book-view').hide();
   $('.detail-view').hide();
   $('.form-view').show();
+
+  $('#new-form').on('submit', bookView.submit);
+
 }
-
-
-
 
 module.bookView = bookView;
 
