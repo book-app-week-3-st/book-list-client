@@ -31,13 +31,13 @@ Book.fetchAll = callback => {
   };
   
 Book.fetchOne = callback => {
-  $.ajax({
-    url: `/api/v1/books/${this.author_id}`,
-    method: `GET`,
-  })
+  $.get(`http://localhost:3000/api/v1/books/${this.author_id}`)
   .then(results => {
     Book.loadAll(results);
     callback();
+  },
+  function(err) {
+    console.error(err);
   })
 };
 
@@ -48,3 +48,4 @@ Book.prototype.create = function(callback) {
     if (callback) callback();
   })
 };
+
