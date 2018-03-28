@@ -30,3 +30,21 @@ Book.fetchAll = callback => {
     })
   };
   
+Book.fetchOne = callback => {
+  $.ajax({
+    url: `/api/v1/books/${this.author_id}`,
+    method: `GET`,
+  })
+  .then(results => {
+    Book.loadAll(results);
+    callback();
+  })
+};
+
+Book.prototype.create = function(callback) {
+  $.post('/api/v1/books', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
+  .then(data => {
+    console.log(data);
+    if (callback) callback();
+  })
+};
