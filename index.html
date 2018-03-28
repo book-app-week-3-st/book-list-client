@@ -2,14 +2,19 @@
   <head>
     <meta charsets="UTF-8">
     <title>Book App</title>
-    <meta name="viewport" content="width=device-width, intitial-scale=1">
-    <link rel="stylesheet" href="vendor/styles/normalize.css">
-    <link rel="stylesheet" href="vendor/styles/icons.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/icons.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
     <link href="https://fonts.googleapis.com/css?family=Domine" rel="stylesheet">
+    
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
 
     <script id="book-list-template" type="text/x-handlebars-template">
 
@@ -21,10 +26,10 @@
             <img src="{{image_url}}"></img>
           </div>
           <p>{{isbn}}</p>
-
-        <section class="book-body"><p>{{description}}</p></section>
-      </article>
-    </script>
+          <a href="/books/{{book_id}}">Book Details</a>
+          <section class="book-body"><p>{{description}}</p></section>
+        </article>
+      </script>
   
   </head>
   <body>
@@ -33,10 +38,30 @@
       <h1>Books App</h1>
       </header>
 
-      <main>
-      <section class="container"></section>
+      <main class= "container">
 
-      <section id="formView" class="container"></section>
+      <section id = "book-detail" class="detail-view"></section>
+
+      <section class="form-view">
+          <h1>New Book</h1>
+          <form action="#" id="new-form">
+            <label>
+              <input type="text" id="book-title" placeholder="Book title" required>
+            </label>
+            <label>
+              <input type="text" id="book-author" placeholder="Author Name" required>
+            </label>
+            <label>
+              <input type="text" id="isbn" placeholder="ISBN" required>
+            </label>
+            <label>
+              <input type="text" id="image-url" placeholder="Image URL" required>
+            </label>
+            <textarea id="description" rows="8" cols="40" required></textarea>
+            <button type="submit">Submit and return to the home page</button>
+          </form>
+
+      </section>
 
       <section id= "book-list" class="book-view"></section>
 
@@ -45,13 +70,9 @@
     <footer>
 
     </footer>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
     <script src="scripts/models/book.js"></script>
     <script src="scripts/views/book-view.js"></script>
-    <script src="scripts/views/error-view.js"></script>
+    <!-- <script src="scripts/views/error-view.js"></script> -->
     <script src="scripts/views/routes.js"></script>
     <script>$(document).ready(Book.fetchAll(app.bookView.initIndexPage))</script>
 
