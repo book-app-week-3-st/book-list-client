@@ -29,18 +29,29 @@
           <a href="/books/{{book_id}}">Book Details</a>
           <section class="book-body"><p>{{description}}</p></section>
         </article>
+        <button data-id="{{book_id}}" class="detail-view"><a href="/books/update/{{book_id}}">Update</a></button>
+      <button data-id="{{book_id}}" class="detail-view">Delete</button>
       </script>
   
   </head>
   <body>
-
+    <nav class="main-nav">
+        <div class="icon-menu"></div>
+        <div>      
+          <ul class="listItems">
+            <li ><a href="/"> Home</a></li>
+            <li ><a href="/books/new"> Add A New Book</a></li>
+          </ul>
+    </div>
+    </nav>
       <header>
       <h1>Books App</h1>
       </header>
 
       <main class= "container">
 
-      <section id = "book-detail" class="detail-view"></section>
+      <section id = "book-detail" class="detail-view">
+      </section>
 
       <section class="form-view">
           <h1>New Book</h1>
@@ -58,10 +69,31 @@
               <input type="text" id="image-url" placeholder="Image URL" required>
             </label>
             <textarea id="description" rows="8" cols="40" required></textarea>
-            <button type="submit">Submit and return to the home page</button>
+            <button id="button" type="submit">Submit and return to the home page</button>
           </form>
 
       </section>
+
+      <section class="update-view">
+        <h1>Update Book</h1>
+        <form action="#" id="update-form">
+          <label>
+            <input type="text" id="Ubook-title" placeholder="Book title" required>
+          </label>
+          <label>
+            <input type="text" id="Ubook-author" placeholder="Author Name" required>
+          </label>
+          <label>
+            <input type="text" id="Uisbn" placeholder="ISBN" required>
+          </label>
+          <label>
+            <input type="text" id="Uimage-url" placeholder="Image URL" required>
+          </label>
+          <textarea id="Udescription" rows="8" cols="40" required></textarea>
+          <button id="Ubutton" type="submit">Submit and return to the home page</button>
+        </form>
+
+    </section>
 
       <section id= "book-list" class="book-view"></section>
 
