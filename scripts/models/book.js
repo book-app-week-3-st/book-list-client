@@ -67,3 +67,14 @@ Book.prototype.updateRecord = function(ctx, callback) {
     .then(callback)
     .catch(console.error);
 };
+
+Book.prototype.deleteRecord = function(ctx, callback) {
+  console.log (ctx.params.book_id);
+  $.ajax({
+    url: `http://localhost:3000/api/v1/books/${ctx.params.book_id}`,
+    method: 'DELETE'
+  })
+    .then(console.log)
+    .then(callback)
+    .catch(console.error);
+};
