@@ -30,7 +30,7 @@
           <section class="book-body"><p>{{description}}</p></section>
         </article>
         <button data-id="{{book_id}}" class="detail-view"><a href="/books/update/{{book_id}}">Update</a></button>
-      <button data-id="{{book_id}}" class="detail-view">Delete</button>
+      <button id= "delete-button" data-id="{{book_id}}" class="detail-view">Delete</button>
       </script>
   
   </head>
@@ -41,6 +41,7 @@
           <ul class="listItems">
             <li ><a href="/"> Home</a></li>
             <li ><a href="/books/new"> Add A New Book</a></li>
+            <li ><a href ="/admin">Sign In</a></li>
           </ul>
     </div>
     </nav>
@@ -94,6 +95,18 @@
         </form>
 
     </section>
+
+    <section class="admin-view">
+      <form action="#" id= "admin-form">
+          <label>
+              <input type="text" id="password" placeholder="Enter Password" required>
+              <button id="passButton" type="submit">Validate Password</button>
+            </label>
+      </form>
+
+    </section>
+
+
 
       <section id= "book-list" class="book-view"></section>
 

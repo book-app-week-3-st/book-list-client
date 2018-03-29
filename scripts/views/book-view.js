@@ -7,13 +7,38 @@ var app = app || {};
 
   bookView.initIndexPage = () => {
     $('#book-list').empty();
-    $('.detail-view').hide();
     $('.update-view').hide();
     $('.form-view').hide();
     $('.book-view').show();
+    $('.admin-view').hide();
+    
     Book.all.map(book => {
       $('#book-list').append(book.toHtml());
     });
+    $('.detail-view').hide();
+  };
+
+  bookView.initFormPage = () => {
+    $('.update-view').hide();
+    $('.book-view').hide();
+    $('.detail-view').hide();
+    $('.form-view').show();
+    $('.admin-view').hide();
+
+    $('#new-form').on('submit', bookView.submit);
+  };
+    
+  bookView.initUpdatePage = (ctx) => {
+    console.log(ctx.params);
+    $('.update-view').show();
+    $('.book-view').hide();
+    $('.detail-view').hide();
+    $('.form-view').hide();
+    $('.admin-view').hide();
+
+    $('#update-form').on('submit', (e) => bookView.update(e, ctx));
+    
+    window.location = '../';
   };
 
   bookView.initDetailPage = (ctx) => {
@@ -21,25 +46,27 @@ var app = app || {};
     $('.book-view').hide();
     $('.update-view').hide();
     $('.form-view').hide();
+    $('.admin-view').hide();
     $('.detail-view').show();
     let selected = Book.all.filter(el => el.book_id = ctx.params.book_id);
     console.log(selected);
     $('#book-detail').append(selected[0].toHtml());
+    $('#delete-button').on('click', (e) => bookView.delete(e, ctx));
   };
 
-  bookView.update = (ctx, event) => {
+  bookView.delete = (event, ctx) => {
+    console.log('delete method runs');
+    console.log(ctx.params);
     event.preventDefault();
-    console.log(ctx.params.book_id);
-    let book = new Book({
-      title: $('#Ubook-title').val(),
-      author: $('#Ubook-author').val(),
-      isbn: $('#Uisbn').val(),
-      image_url: $('#Uimage-url').val(),
-      description: $('#Udescription').val(),
-    });
-    console.log(book);
-    book.updateRecord(ctx);
+
+    let selected = Book.all.filter(el => el.book_id = ctx.params.book_id);
+    console.log(selected);
+    selected[0].deleteRecord(ctx);
+
+    window.location = '../';
+
   };
+
 
   bookView.submit = event => {
     event.preventDefault();
@@ -52,31 +79,30 @@ var app = app || {};
     });
     console.log(book);
     book.create();
-
+    
     window.location = '../';
   };
-
-  bookView.initFormPage = () => {
-    $('.update-view').hide();
-    $('.book-view').hide();
-    $('.detail-view').hide();
-    $('.form-view').show();
-
-    $('#new-form').on('submit', bookView.submit);
-
-  };
-
-  bookView.initUpdatePage = (ctx) => {
+  
+  bookView.update = (event, ctx) => {
+    console.log(event);
+    event.preventDefault();
+    debugger;
     console.log(ctx.params);
-    $('.update-view').show();
-    $('.book-view').hide();
-    $('.detail-view').hide();
-    $('.form-view').hide();
+    let book = new Book({
+      book_id: ctx.params.book_id,
+      title: $('#Ubook-title').val(),
+      author: $('#Ubook-author').val(),
+      isbn: $('#Uisbn').val(),
+      image_url: $('#Uimage-url').val(),
+      description: $('#Udescription').val(),
+    });
+    console.log(book);
+    book.updateRecord(ctx);
 
-    $('#update-form').on('submit', bookView.update(ctx));
+    window.location = '../';
 
-    // window.location = '../';
   };
+
 
   module.bookView = bookView;
 
