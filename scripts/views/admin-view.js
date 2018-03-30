@@ -1,4 +1,5 @@
 `use strict`;
+
 var app = app || {};
 
 (function(module) {
@@ -12,16 +13,20 @@ var app = app || {};
     $('.detail-view').hide();
     $('.admin-view').show();
 
-    $('#admin-form').on('submit', app.adminView.verify);
+    $('#admin-form').on('submit', function (event) {
 
-    let token = event.target.password.value;
+      event.preventDefault();
 
-    $.get(`'http://localhost:3000/api/v1/admin`, { token })
-      .then(() => {
-        localStorage.token = true;
-        page('/tasks/add');
-      })
-      .catch(() => page('/'));
+      let token = event.target.password.value;
+    
+      $.get(`http://localhost:3000/api/v1/admin`, { token })
+        .then(() => {
+          localStorage.token = true;
+          page('/books/new');
+          
+        })
+        .catch(() => page('/'));
+    });
   };
 
   adminView.verify = function(ctx, next) {

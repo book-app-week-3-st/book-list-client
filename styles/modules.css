@@ -1,0 +1,54 @@
+nav {
+  height: 15vh;
+}
+
+nav .main-nav {
+height: 10vw;
+}
+li {
+  background-color: burlywood;
+  border: solid .2em black;
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 2vw;
+  padding: 2vw;
+}
+
+li :hover {
+  background-color: snow;
+}
+
+article:first-child {
+  margin-top: 5vw;
+}
+
+img a:last-child {
+  margin-bottom: 5vw;
+}
+
+footer {
+  height: 10vh;
+  width: 100%;
+  background-color: slateblue;
+}
+
+footer p {
+  float: left;
+  margin-left: 5em;
+}
+
+#admin-form {
+  height: 10em;
+}
+
+#new-form input {
+  border: .2em solid black;
+    border-radius: 10px;
+    height: 5vh;
+}
+
+#new-form #description {
+  border: .2em solid black;
+  border-radius: 10px;
+  margin-top: 1em;
+}
