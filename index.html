@@ -29,7 +29,7 @@
           <a href="/books/{{book_id}}">Book Details</a>
           <section class="book-body"><p>{{description}}</p></section>
         </article>
-        <button data-id="{{book_id}}" class="detail-view"><a href="/books/update/{{book_id}}">Update</a></button>
+        <a href="/books/update/{{book_id}}"><button data-id="{{book_id}}" type="click" class="detail-view">Update</button></a>
       <button id= "delete-button" data-id="{{book_id}}" class="detail-view">Delete</button>
       </script>
   
@@ -106,20 +106,20 @@
 
     </section>
 
-
-
       <section id= "book-list" class="book-view"></section>
 
     </main>
     
     <footer>
-
+      <p>By Collin and Scott.</p>
     </footer>
+
     <script src="scripts/models/book.js"></script>
     <script src="scripts/views/book-view.js"></script>
+    <script src="scripts/views/admin-view.js"></script>
     <!-- <script src="scripts/views/error-view.js"></script> -->
     <script src="scripts/views/routes.js"></script>
-    <script>$(document).ready(Book.fetchAll(app.bookView.initIndexPage))</script>
+    <script>$(document).ready(app.Book.fetchAll(app.bookView.initIndexPage))</script>
 
   </body>
 </html>

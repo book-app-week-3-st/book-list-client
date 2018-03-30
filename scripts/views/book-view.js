@@ -11,8 +11,8 @@ var app = app || {};
     $('.form-view').hide();
     $('.book-view').show();
     $('.admin-view').hide();
-    
-    Book.all.map(book => {
+
+    app.Book.all.map(book => {
       $('#book-list').append(book.toHtml());
     });
     $('.detail-view').hide();
@@ -27,28 +27,28 @@ var app = app || {};
 
     $('#new-form').on('submit', bookView.submit);
   };
-    
+
   bookView.initUpdatePage = (ctx) => {
     console.log(ctx.params);
-    $('.update-view').show();
     $('.book-view').hide();
     $('.detail-view').hide();
     $('.form-view').hide();
     $('.admin-view').hide();
-
+    $('.update-view').show();
+    
     $('#update-form').on('submit', (e) => bookView.update(e, ctx));
     
-    window.location = '../';
   };
 
   bookView.initDetailPage = (ctx) => {
+
     $('#book-detail').empty();
     $('.book-view').hide();
     $('.update-view').hide();
     $('.form-view').hide();
     $('.admin-view').hide();
     $('.detail-view').show();
-    let selected = Book.all.filter(el => el.book_id = ctx.params.book_id);
+    let selected = app.Book.all.filter(el => el.book_id = ctx.params.book_id);
     console.log(selected);
     $('#book-detail').append(selected[0].toHtml());
     $('#delete-button').on('click', (e) => bookView.delete(e, ctx));
@@ -59,7 +59,7 @@ var app = app || {};
     console.log(ctx.params);
     event.preventDefault();
 
-    let selected = Book.all.filter(el => el.book_id = ctx.params.book_id);
+    let selected = app.Book.all.filter(el => el.book_id = ctx.params.book_id);
     console.log(selected);
     selected[0].deleteRecord(ctx);
 
@@ -70,7 +70,7 @@ var app = app || {};
 
   bookView.submit = event => {
     event.preventDefault();
-    let book = new Book({
+    let book = new app.Book({
       title: $('#book-title').val(),
       author: $('#book-author').val(),
       isbn: $('#isbn').val(),
@@ -79,16 +79,15 @@ var app = app || {};
     });
     console.log(book);
     book.create();
-    
+
     window.location = '../';
   };
-  
+
   bookView.update = (event, ctx) => {
-    console.log(event);
     event.preventDefault();
-    debugger;
+    console.log(event);
     console.log(ctx.params);
-    let book = new Book({
+    let book = new app.Book({
       book_id: ctx.params.book_id,
       title: $('#Ubook-title').val(),
       author: $('#Ubook-author').val(),
@@ -99,7 +98,7 @@ var app = app || {};
     console.log(book);
     book.updateRecord(ctx);
 
-    window.location = '../';
+    window.location = '../../';
 
   };
 

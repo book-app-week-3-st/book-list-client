@@ -1,10 +1,12 @@
 html {
     text-align: center;
+    margin: 0px auto;
+    width: 90%;
     font-family: 'Domine', serif;
 }
 
 header {
-    height: 20vh;
+    height: 15vh;
     background-color: slateblue;
     color: lightgrey
 }
@@ -19,20 +21,20 @@ main {
 
 img {
     width: 25vw;
-    height: 40vh;
+    height: 30vh;
+    border: .5em solid grey;
 }
 
-article:first-child {
-    margin-top: 5vw;
+#password {
+    margin-top: 9vh;
+    border: .2em solid black;
+    border-radius: 10px;
+    height: 5vh;
 }
 
-img:last-child {
-    margin-bottom: 5vw;
-}
-
-footer {
-    height: 20vh;
-    width: 100%;
-    background-color: black;
-
+#passButton {
+    margin-top: 9vh;
+    border: .2em solid black;
+    border-radius: 10px;
+    height: 5vh;
 }
